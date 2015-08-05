@@ -211,3 +211,7 @@ Thumbs.db
 #Mac bundle stuff
 *.dmg
 *.app
+
+
+#bower
+*.bower.json
