@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{5559D670-C37F-4C56-8A25-FC8396962DFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>bugTrapKit</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>bugTrapKit</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Release|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\UITest-Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DefineConstants>UITEST;</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Debug|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\UITest-Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG; UITEST;</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Debug|iPhoneSimulator' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\UITest-Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG; UITEST; </DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Mono.CSharp" />
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.42\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client">
+      <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Pcl.iOS">
+      <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Pcl.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit">
+      <HintPath>..\packages\Octokit.0.14.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.HttpClient">
+      <HintPath>..\packages\ServiceStack.HttpClient.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.HttpClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Resources\Images.xcassets\" />
+    <Folder Include="Controllers\CollectionViewControllers\" />
+    <Folder Include="Controllers\NavigationControllers\" />
+    <Folder Include="Controllers\PresentationControllers\" />
+    <Folder Include="Controllers\TableViewControllers\" />
+    <Folder Include="Controllers\ViewControllers\" />
+    <Folder Include="Controllers\CollectionViewControllers\CollectionViewCells\" />
+    <Folder Include="Controllers\TableViewControllers\CollectionViewCells\" />
+    <Folder Include="Controllers\TableViewControllers\CollectionViews\" />
+    <Folder Include="Controllers\TableViewControllers\TableViewCells\" />
+    <Folder Include="Controllers\ViewControllers\Views\" />
+    <Folder Include="Annotate\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Trackers\" />
+    <Folder Include="Trackers\Common\" />
+    <Folder Include="Trackers\DoneDone\" />
+    <Folder Include="Trackers\Pivotal\" />
+    <Folder Include="Trackers\JIRA\" />
+    <Folder Include="Trackers\DoneDone\Domain\" />
+    <Folder Include="Trackers\Common\Domain\" />
+    <Folder Include="Trackers\JIRA\Domain\" />
+    <Folder Include="Trackers\Pivotal\Domain\" />
+    <Folder Include="Trackers\Common\Interfaces\" />
+    <Folder Include="Trackers\Common\Constants\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Constants\" />
+    <Folder Include="Trackers\GitHub\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="bugTrapKit.cs" />
+    <Compile Include="Controllers\NavigationControllers\BtAnnotateImageNavigationController.cs" />
+    <Compile Include="Controllers\NavigationControllers\BtAnnotateImageNavigationController.designer.cs">
+      <DependentUpon>BtAnnotateImageNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NavigationControllers\BtNewBugDetailsNavigationController.cs" />
+    <Compile Include="Controllers\NavigationControllers\BtNewBugDetailsNavigationController.designer.cs">
+      <DependentUpon>BtNewBugDetailsNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NavigationControllers\BtSettingsNavigationController.cs" />
+    <Compile Include="Controllers\NavigationControllers\BtSettingsNavigationController.designer.cs">
+      <DependentUpon>BtSettingsNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewControllers\Views\BtAnnotateImageView.cs" />
+    <Compile Include="Controllers\ViewControllers\Views\BtAnnotateImageView.designer.cs">
+      <DependentUpon>BtAnnotateImageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewControllers\BtAnnotateImageViewController.cs" />
+    <Compile Include="Controllers\ViewControllers\BtAnnotateImageViewController.designer.cs">
+      <DependentUpon>BtAnnotateImageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtDateDisplayTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtDateDisplayTableViewCell.designer.cs">
+      <DependentUpon>BtDateDisplayTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtDatePickerTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtDatePickerTableViewCell.designer.cs">
+      <DependentUpon>BtDatePickerTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\CollectionViewCells\BtEmbeddedAddImageCollectionViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\CollectionViewCells\BtEmbeddedAddImageCollectionViewCell.designer.cs">
+      <DependentUpon>BtEmbeddedAddImageCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\CollectionViews\BtEmbeddedImageCollectionView.cs" />
+    <Compile Include="Controllers\TableViewControllers\CollectionViews\BtEmbeddedImageCollectionView.designer.cs">
+      <DependentUpon>BtEmbeddedImageCollectionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\CollectionViewCells\BtEmbeddedImageCollectionViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\CollectionViewCells\BtEmbeddedImageCollectionViewCell.designer.cs">
+      <DependentUpon>BtEmbeddedImageCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtEmbeddedImageCollectionViewTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtEmbeddedImageCollectionViewTableViewCell.designer.cs">
+      <DependentUpon>BtEmbeddedImageCollectionViewTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CollectionViewControllers\CollectionViewCells\BtImageCollectionViewCell.cs" />
+    <Compile Include="Controllers\CollectionViewControllers\CollectionViewCells\BtImageCollectionViewCell.designer.cs">
+      <DependentUpon>BtImageCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CollectionViewControllers\BtImageCollectionViewController.cs" />
+    <Compile Include="Controllers\CollectionViewControllers\BtImageCollectionViewController.designer.cs">
+      <DependentUpon>BtImageCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NavigationControllers\BtImageNavigationController.cs" />
+    <Compile Include="Controllers\NavigationControllers\BtImageNavigationController.designer.cs">
+      <DependentUpon>BtImageNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtNewBugDetailsSelectTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtNewBugDetailsSelectTableViewCell.designer.cs">
+      <DependentUpon>BtNewBugDetailsSelectTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtNewBugDetailsSelectTableViewController.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtNewBugDetailsSelectTableViewController.designer.cs">
+      <DependentUpon>BtNewBugDetailsSelectTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\BtNewBugDetailsTableViewController.cs" />
+    <Compile Include="Controllers\TableViewControllers\BtNewBugDetailsTableViewController.designer.cs">
+      <DependentUpon>BtNewBugDetailsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CollectionViewControllers\BtPopupImageCollectionViewController.cs" />
+    <Compile Include="Controllers\CollectionViewControllers\BtPopupImageCollectionViewController.designer.cs">
+      <DependentUpon>BtPopupImageCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CollectionViewControllers\CollectionViewCells\BtPopupImageCollectionViewCell.cs" />
+    <Compile Include="Controllers\CollectionViewControllers\CollectionViewCells\BtPopupImageCollectionViewCell.designer.cs">
+      <DependentUpon>BtPopupImageCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\BtSettingsAccountsTableViewController.cs" />
+    <Compile Include="Controllers\TableViewControllers\BtSettingsAccountsTableViewController.designer.cs">
+      <DependentUpon>BtSettingsAccountsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtSettingsAccountTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtSettingsAccountTableViewCell.designer.cs">
+      <DependentUpon>BtSettingsAccountTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTextFieldTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTextFieldTableViewCell.designer.cs">
+      <DependentUpon>BtTextFieldTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTextViewTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTextViewTableViewCell.designer.cs">
+      <DependentUpon>BtTextViewTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTitlePlaceholderTableViewCell.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtTitlePlaceholderTableViewCell.designer.cs">
+      <DependentUpon>BtTitlePlaceholderTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewControllers\DoneDoneLoginViewController.cs" />
+    <Compile Include="Controllers\ViewControllers\DoneDoneLoginViewController.designer.cs">
+      <DependentUpon>DoneDoneLoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewControllers\JIRALoginViewController.cs" />
+    <Compile Include="Controllers\ViewControllers\JIRALoginViewController.designer.cs">
+      <DependentUpon>JIRALoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewControllers\PivotalTrackerLoginViewController.cs" />
+    <Compile Include="Controllers\ViewControllers\PivotalTrackerLoginViewController.designer.cs">
+      <DependentUpon>PivotalTrackerLoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PresentationControllers\BtPresentationAnimationController.cs" />
+    <Compile Include="Controllers\PresentationControllers\BtImagePresentationController.cs" />
+    <Compile Include="Controllers\BtCollectionViewController.cs" />
+    <Compile Include="Controllers\BtNavigationController.cs" />
+    <Compile Include="Controllers\BtTableViewController.cs" />
+    <Compile Include="Controllers\BtTrackerActivity.cs" />
+    <Compile Include="Controllers\BtViewController.cs" />
+    <Compile Include="Annotate\Annotate.cs" />
+    <Compile Include="Annotate\IAnnotationData.cs" />
+    <Compile Include="Annotate\CalloutAnnotation.cs" />
+    <Compile Include="Annotate\PathAnnotation.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Utilities\TrapState.cs" />
+    <Compile Include="Utilities\Photos.cs" />
+    <Compile Include="Utilities\Settings.cs" />
+    <Compile Include="Utilities\Log.cs" />
+    <Compile Include="Utilities\Keychain.cs" />
+    <Compile Include="Utilities\DeviceInfo.cs" />
+    <Compile Include="Utilities\Analytics.cs" />
+    <Compile Include="Constants\DataKeys.cs" />
+    <Compile Include="Constants\AppKeys.cs" />
+    <Compile Include="Constants\Colors.cs" />
+    <Compile Include="Constants\BugCellTypes.cs" />
+    <Compile Include="Constants\GIAKeys.cs" />
+    <Compile Include="Extensions\StoryboardExtensions.cs" />
+    <Compile Include="Extensions\NullableExtensions.cs" />
+    <Compile Include="Trackers\Pivotal\PivotalTracker.cs" />
+    <Compile Include="Trackers\DoneDone\DoneDoneTracker.cs" />
+    <Compile Include="Trackers\JIRA\JiraTracker.cs" />
+    <Compile Include="Trackers\Common\Tracker.cs" />
+    <Compile Include="Trackers\Common\TrackerService.cs" />
+    <Compile Include="Trackers\Common\TrackerInstance.cs" />
+    <Compile Include="Trackers\Common\Domain\CellData.cs" />
+    <Compile Include="Trackers\Common\Interfaces\ITrackerProxy.cs" />
+    <Compile Include="Trackers\Common\Interfaces\ITrackerState.cs" />
+    <Compile Include="Trackers\Common\Constants\TrackerStatus.cs" />
+    <Compile Include="Trackers\Common\Constants\TrackerType.cs" />
+    <Compile Include="Trackers\Common\Interfaces\ITrackerDetailType.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneActivity.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneActivityBase.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneAttachment.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneCompany.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneHistory.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneIssue.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneIssueBase.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneIssueList.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneIssueListItem.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDonePerson.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneProject.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneReleaseBuild.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneReleaseBuildInfo.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneSimpleItem.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\DoneDoneTag.cs" />
+    <Compile Include="Trackers\DoneDone\Domain\NewIssue.cs" />
+    <Compile Include="Trackers\Common\Domain\BugDetails.cs" />
+    <Compile Include="Trackers\DoneDone\DoneDoneDetail.cs" />
+    <Compile Include="Trackers\DoneDone\DoneDoneProxy.cs" />
+    <Compile Include="Trackers\DoneDone\DoneDoneState.cs" />
+    <Compile Include="Services\RestProxy.cs" />
+    <Compile Include="Services\Constants\AuthenticationType.cs" />
+    <Compile Include="Trackers\Pivotal\PivotalProxy.cs" />
+    <Compile Include="Trackers\Pivotal\PivotalDetail.cs" />
+    <Compile Include="Trackers\Pivotal\PivotalState.cs" />
+    <Compile Include="Trackers\JIRA\JiraProxy.cs" />
+    <Compile Include="Trackers\JIRA\JiraState.cs" />
+    <Compile Include="Trackers\JIRA\JiraDetail.cs" />
+    <Compile Include="Controllers\ViewControllers\BtTrackerLoginViewController.cs" />
+    <Compile Include="Trackers\Common\TrackerProxy.cs" />
+    <Compile Include="Constants\InsightsKeys.cs" />
+    <Compile Include="Trackers\GitHub\GitHubDetail.cs" />
+    <Compile Include="Trackers\GitHub\GitHubProxy.cs" />
+    <Compile Include="Trackers\GitHub\GitHubState.cs" />
+    <Compile Include="Trackers\GitHub\GitHubTracker.cs" />
+    <Compile Include="Controllers\TableViewControllers\TableViewCells\BtNewBugDetailsTableViewCell.cs" />
+    <Compile Include="Constants\Fonts.cs" />
+    <Compile Include="Trackers\Common\Domain\BugDetailCellData.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
+  <ItemGroup>
+    <InterfaceDefinition Include="bugTrapKit.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_120-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_58-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_80-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_120-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_58-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_80-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_1024_768.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_1536_2048.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_2048_1536.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_640_1136.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_640_960.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_768_1024.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_px1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_px2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x3.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_black.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_black.imageset\bg_logo_web_black.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_grey.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_grey.imageset\bg_logo_web_grey.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_red.imageset\bg_logo_web_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\i_default_avatar.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\i_default_avatar%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_red.imageset\i_logo_web_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_white.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_white.imageset\i_logo_web_white.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_3.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation.imageset\i_tool_annotation.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation_on.imageset\i_tool_annotation_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow.imageset\i_tool_arrow.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow_on.imageset\i_tool_arrow_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle.imageset\i_tool_circle.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle_on.imageset\i_tool_circle_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_cog.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_cog.imageset\i_tool_cog.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color.imageset\i_tool_color.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_black.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_black.imageset\i_tool_color_black.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_blue.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_blue.imageset\i_tool_color_blue.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_green.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_green.imageset\i_tool_color_green.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_orange.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_orange.imageset\i_tool_color_orange.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_red.imageset\i_tool_color_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_white.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_white.imageset\i_tool_color_white.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker.imageset\i_tool_marker.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker_on.imageset\i_tool_marker_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square.imageset\i_tool_square.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square_on.imageset\i_tool_square_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\i_trigger.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\i_trigger%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone4s.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone5s.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone6plus.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_ipad2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_ipadretina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

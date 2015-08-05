@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.io.bugtrap.bugTrap</string>
+	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>T32UVX74Z3.io.bugtrap.bugTrap</string>
+		<string>T32UVX74Z3.io.bugtrap.bugTrap.group</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{EFC4AF23-BFCC-4533-A6AE-8BBEC69FCC25}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>bugTrap</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>bugTrap</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignProvision>c9d0a8cf-2259-4594-88db-1634dc790750</CodesignProvision>
+    <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="/bin/bash root_plist.sh -c &quot;© 2015 bugTrap Inc&quot;" />
+      </CustomCommands>
+    </CustomCommands>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>c9d0a8cf-2259-4594-88db-1634dc790750</CodesignProvision>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="/bin/bash root_plist.sh -c &quot;© 2015 bugTrap Inc&quot;" />
+      </CustomCommands>
+    </CustomCommands>
+    <MtouchLink>None</MtouchLink>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution: Colby Williams (T32UVX74Z3)</CodesignKey>
+    <CodesignProvision>0e1a39a3-ce96-4b92-a67c-f99e60d23b3f</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <BuildIpa>true</BuildIpa>
+    <IpaPackageName>bugTrap</IpaPackageName>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="/bin/bash root_plist.sh -c &quot;© 2015 bugTrap Inc&quot;" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IpaPackageName>bugTrap</IpaPackageName>
+    <BuildIpa>true</BuildIpa>
+    <ConsolePause>false</ConsolePause>
+    <CodesignProvision>0e1a39a3-ce96-4b92-a67c-f99e60d23b3f</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Colby Williams (T32UVX74Z3)</CodesignKey>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="/bin/bash root_plist.sh -c &quot;© 2015 bugTrap Inc&quot;" />
+      </CustomCommands>
+    </CustomCommands>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <DefineConstants>UITEST;</DefineConstants>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Debug|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\UITest-Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG; UITEST;</DefineConstants>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchUseSGen>true</MtouchUseSGen>
+    <CodesignProvision>93362fc6-1e85-4d84-b372-53f169ff161d</CodesignProvision>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+    <IpaPackageName>
+    </IpaPackageName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITest-Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG; UITEST;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchLink>None</MtouchLink>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <ConsolePause>false</ConsolePause>
+    <CodesignProvision>c9d0a8cf-2259-4594-88db-1634dc790750</CodesignProvision>
+    <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="/bin/bash root_plist.sh -c &quot;© 2015 bugTrap Inc&quot;" />
+      </CustomCommands>
+    </CustomCommands>
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Mono.CSharp" />
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.42\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client">
+      <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Pcl.iOS">
+      <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Pcl.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit">
+      <HintPath>..\packages\Octokit.0.14.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.HttpClient">
+      <HintPath>..\packages\ServiceStack.HttpClient.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.HttpClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
+  <ItemGroup>
+    <ProjectReference Include="..\bugTrapKit\bugTrapKit.csproj">
+      <Project>{5559D670-C37F-4C56-8A25-FC8396962DFC}</Project>
+      <Name>bugTrapKit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Images.xcassets\test_screenshot.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_120-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_58-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_80-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\i_bugtrap_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_120-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_58-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_80-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIconAction.appiconset\i_bugtrap_action_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_1024_768.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_1536_2048.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_2048_1536.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_640_1136.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_640_960.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\l_bugtrap_768_1024.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_px1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_px2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_bugtrap.imageset\logo_bugtrap_large_x3.png" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_black.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_black.imageset\bg_logo_web_black.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_grey.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_grey.imageset\bg_logo_web_grey.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\bg_logo_web_red.imageset\bg_logo_web_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_create_bug_activity.imageset\i_bugtrap_action_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\i_default_avatar.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_default_avatar.imageset\i_default_avatar%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_red.imageset\i_logo_web_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_white.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_logo_web_white.imageset\i_logo_web_white.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_selected_check.imageset\i_selected_check_3.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation.imageset\i_tool_annotation.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_annotation_on.imageset\i_tool_annotation_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow.imageset\i_tool_arrow.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_arrow_on.imageset\i_tool_arrow_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle.imageset\i_tool_circle.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_circle_on.imageset\i_tool_circle_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_cog.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_cog.imageset\i_tool_cog.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color.imageset\i_tool_color.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_black.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_black.imageset\i_tool_color_black.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_blue.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_blue.imageset\i_tool_color_blue.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_green.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_green.imageset\i_tool_color_green.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_orange.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_orange.imageset\i_tool_color_orange.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_red.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_red.imageset\i_tool_color_red.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_white.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_color_white.imageset\i_tool_color_white.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker.imageset\i_tool_marker.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_marker_on.imageset\i_tool_marker_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square.imageset\i_tool_square.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square_on.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_tool_square_on.imageset\i_tool_square_on.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\i_trigger.png" />
+    <ImageAsset Include="Resources\Images.xcassets\i_trigger.imageset\i_trigger%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_donedone.imageset\donedone_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_jira.imageset\logo_activity_jira_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_activity_pivotaltracker.imageset\logo_activity_pivotaltracker_76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_donedone.imageset\logo_donedone_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_jira.imageset\logo_jira_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\logo_pivotaltracker.imageset\logo_pivotaltracker_87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_ipad2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_ipadretina.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone4s.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone5s.png" />
+    <ImageAsset Include="Resources\Images.xcassets\test_screenshot.imageset\test_iphone6plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Settings.bundle\en.lproj\Root.strings" />
+    <BundleResource Include="Settings.bundle\Root.plist" />
+  </ItemGroup>
+</Project>

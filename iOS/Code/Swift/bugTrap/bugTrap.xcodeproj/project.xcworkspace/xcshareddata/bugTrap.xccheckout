@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FD297411-56CD-4784-87A7-8F44D9CB2069</string>
+	<key>IDESourceControlProjectName</key>
+	<string>bugTrap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FC9DA478277037CE69193A0E3B95FBECA576F62F</key>
+		<string>https://bitbucket.org/bugtrapinc/ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Code/bugTrap/bugTrap.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FC9DA478277037CE69193A0E3B95FBECA576F62F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/bugtrapinc/ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FC9DA478277037CE69193A0E3B95FBECA576F62F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FC9DA478277037CE69193A0E3B95FBECA576F62F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
