@@ -1,6 +1,4 @@
 # [bugTrap](http://bugtrap.io)
-===
-
 ###What's here
 ---
 
