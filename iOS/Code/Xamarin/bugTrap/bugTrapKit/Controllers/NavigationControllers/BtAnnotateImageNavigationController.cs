@@ -96,7 +96,7 @@ namespace bugTrapKit
 				// TrackerService.Shared.SetCurrentTrackerType(.None)
 			}
 
-			if (ExtensionContext != null) {
+			if (ExtensionContext != null || TrapState.Shared.InSdk) {
 
 				SetNavigationBarHidden(true, false);
 				SetToolbarHidden(true, false);
@@ -107,7 +107,7 @@ namespace bugTrapKit
 		{
 			base.ViewDidAppear(animated);
 
-			if (ExtensionContext != null) {
+			if (ExtensionContext != null || TrapState.Shared.InSdk) {
 
 				SetNavigationBarHidden(false, true);
 				SetToolbarHidden(false, true);

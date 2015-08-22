@@ -27,6 +27,12 @@ namespace bugTrapKit
 			var bugTrapAlbum = PHAssetCollection.FetchAssetCollections(new [] { collectionLocalIdentifier }, null)?.firstObject as PHAssetCollection;
 			if (bugTrapAlbum != null) {
 
+				// if we passed in null for the localIdentifier, we just want to save the image and
+				// get a new identifier (most likely being used as the sdk)
+				if (string.IsNullOrEmpty(localIdentifier)) {
+					return await SaveAsset(updatedSnapshot, bugTrapAlbum, tcs);
+				}
+
 				// get the asset for the localIdentifier
 				var asset = PHAsset.FetchAssetsUsingLocalIdentifiers(new [] { localIdentifier }, null)?.firstObject as PHAsset;
 				if (asset != null) {
@@ -74,41 +80,43 @@ namespace bugTrapKit
 									
 						} else {// if the asset isn't in the bugTrap album, create a new asset and put it in the album, and leave the original unchanged
 
-							string newLocalIdentifier = null;
+							return await SaveAsset(updatedSnapshot, bugTrapAlbum, tcs);
 
-							PHPhotoLibrary.SharedPhotoLibrary.PerformChanges(() => {
-
-								// create a new asset from the UIImage updatedSnapshot
-								var createAssetRequest = PHAssetChangeRequest.FromImage(updatedSnapshot);
-
-								// create a request to make changes to the bugTrap album
-								var collectionRequest = PHAssetCollectionChangeRequest.ChangeRequest(bugTrapAlbum);
-
-								// get a reference to the new localIdentifier
-								newLocalIdentifier = createAssetRequest.PlaceholderForCreatedAsset.LocalIdentifier;
-
-								// add the newly created asset to the bugTrap album
-								collectionRequest.AddAssets(new [] { createAssetRequest.PlaceholderForCreatedAsset });
-
-							}, (success, error) => {
-
-								if (success) {
-
-									if (!tcs.TrySetResult(newLocalIdentifier)) {
-										var ex = new Exception ("UpdateAsset Failed");
-										tcs.TrySetException(ex);
-										// Log.Error(ex);
-									}
-
-								} else if (error != null) {
-									// Log.Error("Photos", error);
-									if (!tcs.TrySetResult(null)) {
-										var ex = new Exception (error.LocalizedDescription);
-										tcs.TrySetException(ex);
-										// Log.Error(ex);
-									}
-								}
-							});
+//							string newLocalIdentifier = null;
+//
+//							PHPhotoLibrary.SharedPhotoLibrary.PerformChanges(() => {
+//
+//								// create a new asset from the UIImage updatedSnapshot
+//								var createAssetRequest = PHAssetChangeRequest.FromImage(updatedSnapshot);
+//
+//								// create a request to make changes to the bugTrap album
+//								var collectionRequest = PHAssetCollectionChangeRequest.ChangeRequest(bugTrapAlbum);
+//
+//								// get a reference to the new localIdentifier
+//								newLocalIdentifier = createAssetRequest.PlaceholderForCreatedAsset.LocalIdentifier;
+//
+//								// add the newly created asset to the bugTrap album
+//								collectionRequest.AddAssets(new [] { createAssetRequest.PlaceholderForCreatedAsset });
+//
+//							}, (success, error) => {
+//
+//								if (success) {
+//
+//									if (!tcs.TrySetResult(newLocalIdentifier)) {
+//										var ex = new Exception ("UpdateAsset Failed");
+//										tcs.TrySetException(ex);
+//										// Log.Error(ex);
+//									}
+//
+//								} else if (error != null) {
+//									// Log.Error("Photos", error);
+//									if (!tcs.TrySetResult(null)) {
+//										var ex = new Exception (error.LocalizedDescription);
+//										tcs.TrySetException(ex);
+//										// Log.Error(ex);
+//									}
+//								}
+//							});
 						}
 					}
 				}
@@ -129,6 +137,49 @@ namespace bugTrapKit
 
 			return await tcs.Task;
 		}
+
+
+		public Task<string> SaveAsset (UIImage updatedSnapshot, PHAssetCollection bugTrapAlbum, TaskCompletionSource<string> tcs)
+		{
+			string newLocalIdentifier = null;
+
+			PHPhotoLibrary.SharedPhotoLibrary.PerformChanges(() => {
+
+				// create a new asset from the UIImage updatedSnapshot
+				var createAssetRequest = PHAssetChangeRequest.FromImage(updatedSnapshot);
+
+				// create a request to make changes to the bugTrap album
+				var collectionRequest = PHAssetCollectionChangeRequest.ChangeRequest(bugTrapAlbum);
+
+				// get a reference to the new localIdentifier
+				newLocalIdentifier = createAssetRequest.PlaceholderForCreatedAsset.LocalIdentifier;
+
+				// add the newly created asset to the bugTrap album
+				collectionRequest.AddAssets(new [] { createAssetRequest.PlaceholderForCreatedAsset });
+
+			}, (success, error) => {
+
+				if (success) {
+
+					if (!tcs.TrySetResult(newLocalIdentifier)) {
+						var ex = new Exception ("UpdateAsset Failed");
+						tcs.TrySetException(ex);
+						// Log.Error(ex);
+					}
+
+				} else if (error != null) {
+					// Log.Error("Photos", error);
+					if (!tcs.TrySetResult(null)) {
+						var ex = new Exception (error.LocalizedDescription);
+						tcs.TrySetException(ex);
+						// Log.Error(ex);
+					}
+				}
+			});
+
+			return tcs.Task;
+		}
+
 
 
 		public Task<List<NSData>> GetImageDataForLocalIdentifiers (List<string> localIdentifiers)

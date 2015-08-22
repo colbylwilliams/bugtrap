@@ -30,6 +30,9 @@ public class TrapState {
 	private var activeSnapshotImageStore: UIImage?
 
 
+	public var inSdk = false
+	
+	
 	public var inActionExtension: Bool = false {
 		willSet {
 			Analytics.Shared.inActionExtension = newValue
@@ -99,7 +102,7 @@ public class TrapState {
 
 
 	public func hasSnapshotImage(localIdentifier: String) -> Bool {
-		return snapshotImageLocalIdentifiers.contains(localIdentifier.characters)
+		return snapshotImageLocalIdentifiers.contains(localIdentifier)
 	}
 
 
@@ -119,10 +122,21 @@ public class TrapState {
 		}
 	}
 
+
+	public func addSnapshotImageForSdk(snapshotImage: UIImage, callback:() -> ()) {
+		
+		inSdk = true
+		updateSnapshotImage(snapshotImage, localIdentifier: nil, clearActive: true) { id in
+			if let localId = id {
+				self.setActiveSnapshotImage(localId, callback: callback)
+			}
+		}
+	}
+	
 	
 	public func addSnapshotImage(localIdentifier: String) {
 
-		if !snapshotImageLocalIdentifiers.contains(localIdentifier.characters) {
+		if !snapshotImageLocalIdentifiers.contains(localIdentifier) {
 			snapshotImageLocalIdentifiers.append(localIdentifier)
 		}
 	}
@@ -141,7 +155,7 @@ public class TrapState {
 	
 	public func removeSnapshotImage (localIdentifier: String) {
 		
-		if let index = snapshotImageLocalIdentifiers.indexOf(localIdentifier.characters) {
+		if let index = snapshotImageLocalIdentifiers.indexOf(localIdentifier) {
 			snapshotImageLocalIdentifiers.removeAtIndex(index)
 		}
 	}
@@ -180,7 +194,7 @@ public class TrapState {
 
 	
 	public func isSelectedSnapshot(localIdentifier: String) -> Bool {
-		return snapshotImageLocalIdentifiers.contains(localIdentifier.characters)
+		return snapshotImageLocalIdentifiers.contains(localIdentifier)
 	}
 	
 
@@ -242,39 +256,34 @@ public class TrapState {
 	}
 	
 
-	private func updateSnapshotImage (updatedSnapshot: UIImage, localIdentifier: String, clearActive: Bool = false, callback: ((String?) -> ())) {
+	private func updateSnapshotImage (updatedSnapshot: UIImage, localIdentifier: String?, clearActive: Bool = false, callback: ((String?) -> ())) {
 		
 		if clearActive {
 			deactivateActiveSnapshotImage()
-			photos.updateAsset(updatedSnapshot, localIdentifier: localIdentifier) { newId in
-				
-				if let newIdentifier = newId {
-					
-					if let index = self.snapshotImageLocalIdentifiers.indexOf(localIdentifier.characters) {
-						self.snapshotImageLocalIdentifiers.removeAtIndex(index)
-						self.snapshotImageLocalIdentifiers.insert(newIdentifier, atIndex: index)
-					}
-				}
-				
-				callback(newId)
-			}
-		} else {
-			photos.updateAsset(updatedSnapshot, localIdentifier: localIdentifier) { newId in
+		}
 
-				if let newIdentifier = newId {
-					
-					if let index = self.snapshotImageLocalIdentifiers.indexOf(localIdentifier.characters) {
+		photos.updateAsset(updatedSnapshot, localIdentifier: localIdentifier) { newId in
+			
+			if let newIdentifier = newId {
+				
+				if let oldIdentifier = localIdentifier {
+
+					if let index = self.snapshotImageLocalIdentifiers.indexOf(oldIdentifier) {
 						self.snapshotImageLocalIdentifiers.removeAtIndex(index)
 						self.snapshotImageLocalIdentifiers.insert(newIdentifier, atIndex: index)
 					}
-					
-					self.activeSnapshotImageLocalIdentifier = newId
-					callback(newIdentifier)
 					
 				} else {
-					callback(nil)
+					
+					self.snapshotImageLocalIdentifiers.append(newIdentifier)
+				}
+				
+				if !clearActive {
+					self.activeSnapshotImageLocalIdentifier = newIdentifier
 				}
 			}
+			
+			callback(newId)
 		}
 	}
 
@@ -283,11 +292,12 @@ public class TrapState {
 
 		if inActionExtension {
 
-			let returnImageData = [NSData]()
+			var returnImageData = [NSData]()
 			
 			for image in extensionSnapshotImages {
-				let imageData = UIImageJPEGRepresentation(image, 1.0)
-				returnImageData.append(imageData)
+				if let imageDataVal = UIImageJPEGRepresentation(image, 1.0) {
+					returnImageData.append(imageDataVal)
+				}
 			}
 
 			callback(returnImageData)
@@ -309,7 +319,7 @@ public class TrapState {
 			
 			// check if the snapshot the user is currently annotating is in the list
 			if let activeLocalIdentifier = self.activeSnapshotImageLocalIdentifier {
-				if assets.map({ $0.localIdentifier }).contains(activeLocalIdentifier.characters) {
+				if assets.map({ $0.localIdentifier }).contains(activeLocalIdentifier) {
 					self.deactivateActiveSnapshotImage()
 				}
 			}

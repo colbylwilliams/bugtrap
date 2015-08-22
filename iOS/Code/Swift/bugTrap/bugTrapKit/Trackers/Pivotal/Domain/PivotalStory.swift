@@ -59,7 +59,7 @@ class PivotalStory : JsonSerializable {
 
 	}
 
-	init (id: Int, projectId: Int, name: String, description: String, storyType: String, currentState: String, estimate: Int, requestedById: Int, ownedById: Int, ownerIds: [Int], labelIds: [Int], followerIds: [Int], commentIds: [Int], createdAt:NSDate?, beforeId: Int, afterId: Int, integrationId: Int, externalId: String, clNumbers: String) {
+	init (id: Int, projectId: Int, name: String, description: String, storyType: String, currentState: String, estimate: Int, requestedById: Int, ownedById: Int, ownerIds: [Int], labelIds: [Int], followerIds: [Int], commentIds: [Int], beforeId: Int, afterId: Int, integrationId: Int, externalId: String, clNumbers: String) {
 
 		self.id = id
 		self.projectId = projectId
@@ -79,7 +79,7 @@ class PivotalStory : JsonSerializable {
 		self.followerIds = followerIds
 //		self.comments = comments
 		self.commentIds = commentIds
-		self.createdAt = createdAt
+//		self.createdAt = createdAt
 		self.beforeId = beforeId
 		self.afterId = afterId
 		self.integrationId = integrationId
@@ -96,7 +96,7 @@ class PivotalStory : JsonSerializable {
 //		var labels = [label]()		// List[label]
 //		var tasks = [tasks]()		// List[task]
 //		var comments = [comments]()	// List[comment]
-		let createdAt:NSDate?		// datetime
+//		let createdAt:NSDate?		// datetime
 
 
 		if let idW = json["id"].int {
@@ -188,7 +188,7 @@ class PivotalStory : JsonSerializable {
 			let clNumbers = json["cl_numbers"].stringValue
 
 
-			return PivotalStory (id: id!, projectId: projectId!, name: name, description: description, storyType: storyType, currentState: currentState, estimate: estimate, requestedById: requestedById, ownedById: ownedById, ownerIds: ownerIds, labelIds: labelIds, followerIds: followerIds, commentIds: commentIds, createdAt: createdAt, beforeId: beforeId, afterId: afterId, integrationId: integrationId, externalId: externalId, clNumbers: clNumbers)
+			return PivotalStory (id: id!, projectId: projectId!, name: name, description: description, storyType: storyType, currentState: currentState, estimate: estimate, requestedById: requestedById, ownedById: ownedById, ownerIds: ownerIds, labelIds: labelIds, followerIds: followerIds, commentIds: commentIds,  beforeId: beforeId, afterId: afterId, integrationId: integrationId, externalId: externalId, clNumbers: clNumbers)
 		}
 
 		return nil

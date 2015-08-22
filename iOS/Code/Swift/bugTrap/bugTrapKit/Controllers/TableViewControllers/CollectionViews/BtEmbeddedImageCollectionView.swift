@@ -10,7 +10,7 @@ import UIKit
 
 class BtEmbeddedImageCollectionView: UICollectionView {
 
-	required init(coder anCoder: NSCoder){
+	required init?(coder anCoder: NSCoder){
 		super.init(coder:anCoder)
 	}
 }

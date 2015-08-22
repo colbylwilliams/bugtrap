@@ -12,7 +12,7 @@ class BtPopupImageCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet var ImageView: UIImageView!
 	
-	var isSelected = false
+//	var isSelected = false
 	
 	func setData(image: UIImage?)
 	{

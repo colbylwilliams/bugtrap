@@ -31,7 +31,7 @@ class PivotalTracker<TNothing> : TrackerInstance<PivotalState, PivotalProxy> {
 					switch result {
 					case let .Error(error):
 						callback(.Error(error))
-					case let .Value(wrapped):
+					case .Value(_):
 						callback(.Value(Wrapped(true)))
 					}
 				}
@@ -45,7 +45,7 @@ class PivotalTracker<TNothing> : TrackerInstance<PivotalState, PivotalProxy> {
 						switch result {
 						case let .Error(error):
 							callback(.Error(error))
-						case let .Value(wrapped):
+						case .Value(_):
 							callback(.Value(Wrapped(true)))
 						}
 					}
@@ -176,7 +176,7 @@ class PivotalTracker<TNothing> : TrackerInstance<PivotalState, PivotalProxy> {
 			case let .Error(error):
 				Log.error("PivotalTracker", error)
 				callback(.Error(error))
-			case let .Value(wrapped):
+			case .Value(_):
 				Analytics.Shared.issueSent(self.type.googleAnalyticsMetricIndex, trackerName: self.type.rawValue)
 				Analytics.Shared.activity(self.type.activityType, completed: true)
 				callback(.Value(Wrapped(true)))

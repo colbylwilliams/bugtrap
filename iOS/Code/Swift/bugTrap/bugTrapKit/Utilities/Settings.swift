@@ -24,7 +24,7 @@ struct Settings  {
 	
 	static func registerDefaultSettings() {
 		
-		if let path = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")?.stringByAppendingPathComponent("Root.plist") {
+		if let path = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")?.stringByAppendingString("Root.plist") {
 			
 			let keyString = "Key", defaultString = "DefaultValue"
 			
@@ -32,7 +32,7 @@ struct Settings  {
 				
 				if let preferences = settings.valueForKey("PreferenceSpecifiers") as? [NSDictionary] {
 				
-					var registrationDictionary = NSMutableDictionary()
+					var registrationDictionary = [String : AnyObject]()
 					
 					for var i = 0; i < preferences.count; i++ {
 					
@@ -42,7 +42,7 @@ struct Settings  {
 							
 							if let def: AnyObject = prefSpecification.valueForKey(defaultString) {
 								
-								registrationDictionary.setValue(def, forKey: key)
+								registrationDictionary[key] = def
 							}
 						}
 					}
@@ -154,7 +154,7 @@ struct Settings  {
 	static var userReferenceKey: String {
 		var key = getString(.UserReferenceKey)
 		if key.isEmpty {
-			key = UIDevice.currentDevice().identifierForVendor.UUIDString
+			key = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? "unknown"
 			setValue(key, forKey: .UserReferenceKey)
 		}
 		return key

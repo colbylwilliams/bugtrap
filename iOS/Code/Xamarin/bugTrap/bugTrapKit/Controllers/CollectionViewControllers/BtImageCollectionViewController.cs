@@ -40,6 +40,7 @@ namespace bugTrapKit
 		{
 			fetchOptions.SortDescriptors = new [] { new NSSortDescriptor ("modificationDate", false) };
 
+			// delay requesting permission for Test Cloud runs so it doesn't crash
 			Task.Run(async() => {
 				#if UITEST
 				await Task.Delay(3000);

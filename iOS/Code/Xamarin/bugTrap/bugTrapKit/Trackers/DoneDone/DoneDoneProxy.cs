@@ -5,7 +5,6 @@ using Foundation;
 using UIKit;
 using ServiceStack;
 using System.Linq;
-using Xamarin;
 
 namespace bugTrapKit.DoneDone
 {
@@ -47,10 +46,10 @@ namespace bugTrapKit.DoneDone
 				Client.SetCredentials(username, password);
 
 				if (await VerifyAuthentication()) {
-					Insights.Identify(Settings.UserReferenceKey, new Dictionary<string, string> {
-						{ InsightsKeys.DoneDone.Subdomain, subdomain },
-						{ InsightsKeys.DoneDone.Username, username }
-					});
+//					Insights.Identify(Settings.UserReferenceKey, new Dictionary<string, string> {
+//						{ InsightsKeys.DoneDone.Subdomain, subdomain },
+//						{ InsightsKeys.DoneDone.Username, username }
+//					});
 					return true;
 				}
 			}
@@ -74,7 +73,7 @@ namespace bugTrapKit.DoneDone
 
 
 
-		async Task<List<DoneDoneSimpleItem>> GetSimpleProjects () => 
+		async Task<List<DoneDoneSimpleItem>> GetSimpleProjects () =>
 			await GetAsync<List<DoneDoneSimpleItem>>("projects.json");
 
 
@@ -92,7 +91,7 @@ namespace bugTrapKit.DoneDone
 
 
 
-		public async Task<DoneDoneProject> GetProjectDetails (DoneDoneSimpleItem project) => 
+		public async Task<DoneDoneProject> GetProjectDetails (DoneDoneSimpleItem project) =>
 			await GetAsync<DoneDoneProject>($"projects/{project.Id}.json");
 
 
@@ -105,12 +104,12 @@ namespace bugTrapKit.DoneDone
 
 			foreach (var simple in simples) tasks.Add(GetPersonDetails(simple));
 
-			return (await Task.WhenAll(tasks))?.ToList() ?? new List<DoneDonePerson>();
+			return (await Task.WhenAll(tasks))?.ToList() ?? new List<DoneDonePerson> ();
 		}
 
 
 
-		public async Task<DoneDonePerson> GetPersonDetails (DoneDoneSimpleItem person) => 
+		public async Task<DoneDonePerson> GetPersonDetails (DoneDoneSimpleItem person) =>
 			await GetAsync<DoneDonePerson>($"people/{person.Id}.json");
 
 
@@ -123,7 +122,7 @@ namespace bugTrapKit.DoneDone
 
 
 
-		public async Task<List<DoneDoneSimpleItem>> GetPriorityLevels () => 
+		public async Task<List<DoneDoneSimpleItem>> GetPriorityLevels () =>
 			await GetAsync<List<DoneDoneSimpleItem>>("priority_levels.json");
 
 

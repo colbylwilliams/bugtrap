@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoneDoneLoginViewController: TrackerLoginController, UITextFieldDelegate {
+class DoneDoneLoginViewController: TrackerLoginController {
 	
 	@IBOutlet var SubdomainField: UITextField!
 	@IBOutlet var UsernameField: UITextField!
@@ -127,7 +127,7 @@ class DoneDoneLoginViewController: TrackerLoginController, UITextFieldDelegate {
 						self.keychain.StoreKeyValues(trackerData)
 					}
                 }
-            case let .Value(result):
+            case .Value(_):
 				// This isn't right
 				self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }

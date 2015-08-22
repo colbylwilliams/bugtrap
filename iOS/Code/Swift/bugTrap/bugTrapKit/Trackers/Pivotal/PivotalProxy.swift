@@ -123,7 +123,7 @@ class PivotalProxy : TrackerProxy {
 				switch projectsResult {
 				case let .Error(error):
 					callback(.Error(error))
-				case let .Value(wrapped):
+				case .Value(_):
 					Analytics.Shared.trackerLogin(TrackerType.PivotalTracker.rawValue)
 					callback(.Value(Wrapped(true)))
 				}

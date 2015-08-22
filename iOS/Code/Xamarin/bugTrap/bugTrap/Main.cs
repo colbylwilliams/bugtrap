@@ -4,7 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
-using Xamarin;
+
+// using Xamarin;
 using bugTrapKit;
 
 namespace bugTrap
@@ -15,7 +16,7 @@ namespace bugTrap
 		static void Main (string[] args)
 		{
 			#if DEBUG
-			Insights.Initialize(InsightsKeys.ApiKeyDebug);
+			// Insights.Initialize(InsightsKeys.ApiKeyDebug);
 			#else
 			Insights.Initialize(InsightsKeys.ApiKey);
 			#endif

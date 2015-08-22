@@ -21,7 +21,7 @@ class BtAnnotateImageNavigationController: BtNavigationController {
 
 	var imageNavigationController: BtImageNavigationController?
 
-	required override init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 
 		Settings.registerDefaultSettings()
 		Analytics.Shared
@@ -45,7 +45,7 @@ class BtAnnotateImageNavigationController: BtNavigationController {
 						 if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as NSString as String) {
 							provider.loadItemForTypeIdentifier(kUTTypeImage as NSString as String, options: nil) { data, error in
 								// Log.debug("adding new snapshot image...")
-								if let nsData = NSData(contentsOfURL: data as NSURL) {
+								if let nsData = NSData(contentsOfURL: data as! NSURL) {
 									if let image = UIImage(data: nsData) {
 										TrapState.Shared.addSnapshotImage(image, makeActive: TrapState.Shared.hasActiveSnapshotImageIdentifier)
 									}
@@ -71,7 +71,7 @@ class BtAnnotateImageNavigationController: BtNavigationController {
 		super.viewWillAppear(animated)
 
 		if !manuallyInitiatedSettingsFlow {
-			if let presentedController = presentedViewController as? BtSettingsNavigationController {
+			if let _ = presentedViewController as? BtSettingsNavigationController {
 				continueNewBugFlowOnDidAppear = TrackerService.Shared.hasCurrentAuthenticatedTracker
 				if !continueNewBugFlowOnDidAppear {
 					TrackerService.Shared.setCurrentTrackerType(.None)
@@ -82,7 +82,7 @@ class BtAnnotateImageNavigationController: BtNavigationController {
 			TrackerService.Shared.setCurrentTrackerType(.None)
 		}
 
-		if self.extensionContext != nil {
+		if self.extensionContext != nil || TrapState.Shared.inSdk {
 			setNavigationBarHidden(true, animated: false)
 			setToolbarHidden(true, animated: false)
 		}
@@ -93,7 +93,7 @@ class BtAnnotateImageNavigationController: BtNavigationController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 
-		if self.extensionContext != nil {
+		if self.extensionContext != nil || TrapState.Shared.inSdk {
 			setNavigationBarHidden(false, animated: true)
 			setToolbarHidden(false, animated: true)
 		}

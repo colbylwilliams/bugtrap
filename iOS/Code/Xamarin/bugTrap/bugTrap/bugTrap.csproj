@@ -23,7 +23,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>c9d0a8cf-2259-4594-88db-1634dc790750</CodesignProvision>
+    <CodesignProvision>93362fc6-1e85-4d84-b372-53f169ff161d</CodesignProvision>
     <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
@@ -51,7 +51,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>iPhone Developer: Colby Williams (R9D8E8L2SP)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>c9d0a8cf-2259-4594-88db-1634dc790750</CodesignProvision>
+    <CodesignProvision>93362fc6-1e85-4d84-b372-53f169ff161d</CodesignProvision>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchUseSGen>true</MtouchUseSGen>
@@ -166,15 +166,6 @@
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="PLCrashReporterUnifiedBinding">
-      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\packages\ServiceStack.Interfaces.4.0.42\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
@@ -186,9 +177,6 @@
     </Reference>
     <Reference Include="ServiceStack.Pcl.iOS">
       <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Pcl.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Octokit">
-      <HintPath>..\packages\Octokit.0.14.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.HttpClient">
       <HintPath>..\packages\ServiceStack.HttpClient.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.HttpClient.dll</HintPath>
@@ -205,7 +193,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\bugTrapKit\bugTrapKit.csproj">
       <Project>{5559D670-C37F-4C56-8A25-FC8396962DFC}</Project>

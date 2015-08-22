@@ -34,7 +34,7 @@ class DoneDoneTracker<TNothing> : TrackerInstance<DoneDoneState, DoneDoneProxy> 
                     switch result {
                     case let .Error(error):
                         callback(.Error(error))
-                    case let .Value(wrapped):
+                    case .Value(_):
                         callback(.Value(Wrapped(true)))
                     }
                 }
@@ -48,7 +48,7 @@ class DoneDoneTracker<TNothing> : TrackerInstance<DoneDoneState, DoneDoneProxy> 
 						switch result {
 						case let .Error(error):
 							callback(.Error(error))
-						case let .Value(wrapped):
+						case .Value(_):
 							callback(.Value(Wrapped(true)))
 						}
 					}
@@ -185,7 +185,7 @@ class DoneDoneTracker<TNothing> : TrackerInstance<DoneDoneState, DoneDoneProxy> 
             case let .Error(error):
                 Log.error("DoneDoneTracker", error)
                 callback(.Error(error))
-            case let .Value(wrapped):
+            case .Value(_):
 				Analytics.Shared.issueSent(self.type.googleAnalyticsMetricIndex, trackerName: self.type.rawValue)
 				Analytics.Shared.activity(self.type.activityType, completed: true)
                 callback(.Value(Wrapped(true)))

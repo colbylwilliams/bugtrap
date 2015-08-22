@@ -168,19 +168,19 @@ class BtNewBugDetailsTableViewController : BtTableViewController, UICollectionVi
 					cell.setData()
 				
 				case let .Selection (label, title):
-					cell.setData(title: title, detail: value, auxiliary: label)
+					cell.setData(title, detail: value, auxiliary: label)
 				
 				case let .TextField (label, title):
-					cell.setData(title: title, detail: value, auxiliary: label)
+					cell.setData(title, detail: value, auxiliary: label)
 				
 				case let .TextView (label, title):
-					cell.setData(title: title, detail: value, auxiliary: label)
+					cell.setData(title, detail: value, auxiliary: label)
 				
 				case let .DateDisplay (label, title):
-					cell.setData(title: title, detail: value, auxiliary: label)
+					cell.setData(title, detail: value, auxiliary: label)
 				
 				case let .DatePicker (_, label):
-					cell.setData(title: label)
+					cell.setData(label)
 				}
 			
 				return cell
@@ -350,7 +350,7 @@ class BtNewBugDetailsTableViewController : BtTableViewController, UICollectionVi
 			
 			if let textFieldCell = (tableView.visibleCells.filter({$0 as? BtTextFieldTableViewCell != nil})).first as? BtTextFieldTableViewCell {
 				if textFieldCell.TextField.hasText() {
-					TrackerService.Shared.currentTracker?.trackerState.bugTitle = textFieldCell.TextField.text
+					TrackerService.Shared.currentTracker?.trackerState.bugTitle = textFieldCell.TextField.text ?? ""
 				}
 			}
 		

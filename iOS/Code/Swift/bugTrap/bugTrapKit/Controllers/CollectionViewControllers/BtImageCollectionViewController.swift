@@ -50,7 +50,7 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 	
 	var imageRequests: [NSIndexPath: PHImageRequestID] = [:]
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		
 		fetchOptions.sortDescriptors = [ NSSortDescriptor(key: "modificationDate", ascending: false) ]
@@ -91,7 +91,7 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 
 		if let selectedIndexes = collectionView?.indexPathsForSelectedItems() {
 			for index in selectedIndexes {
-				collectionView?.deselectItemAtIndexPath(index as? NSIndexPath, animated: false)
+				collectionView?.deselectItemAtIndexPath(index as NSIndexPath, animated: false)
 			}
 		}
 	}
@@ -121,52 +121,55 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 	func photoLibraryDidChange(changeInstance: PHChange) {
 		
 		dispatch_async(dispatch_get_main_queue()) {
+
+			if let assets = self.assetsFetchResults {
 			
-			// check if there are changes to the assets (insertions, deletions, updates)
-			if let collectionChanges = changeInstance.changeDetailsForFetchResult(self.assetsFetchResults) {
+				// check if there are changes to the assets (insertions, deletions, updates)
+				if let collectionChanges = changeInstance.changeDetailsForFetchResult(assets) {
 
-				self.assetsFetchResults = collectionChanges.fetchResultAfterChanges
-				
-				// get the new fetch result
-				if !collectionChanges.hasIncrementalChanges || collectionChanges.hasMoves {
+					self.assetsFetchResults = collectionChanges.fetchResultAfterChanges
+					
+					// get the new fetch result
+					if !collectionChanges.hasIncrementalChanges || collectionChanges.hasMoves {
 
-					self.collectionView?.reloadData()
-					
-				} else { //if collectionChanges.hasIncrementalChanges {
-
-					var removedIndexes	= [NSIndexPath]()
-					var insertedIndexes = [NSIndexPath]()
-					var changedIndexes	= [NSIndexPath]()
-					
-					if let removed = collectionChanges.removedIndexes {
-						removedIndexes = self.indexPathsFromIndexSet(removed)
-					}
-					
-					if let inserted = collectionChanges.insertedIndexes {
-						insertedIndexes = self.indexPathsFromIndexSet(inserted)
-					}
-					
-					if let changed = collectionChanges.changedIndexes {
-						changedIndexes = self.indexPathsFromIndexSet(changed)
-					}
-					
-					// if we have incremental diffs, tell the collection view to animate insertions and deletions
-					self.collectionView?.performBatchUpdates({
+						self.collectionView?.reloadData()
 						
-						if !removedIndexes.isEmpty {
-							self.collectionView?.deleteItemsAtIndexPaths(removedIndexes)
+					} else { //if collectionChanges.hasIncrementalChanges {
+
+						var removedIndexes	= [NSIndexPath]()
+						var insertedIndexes = [NSIndexPath]()
+						var changedIndexes	= [NSIndexPath]()
+						
+						if let removed = collectionChanges.removedIndexes {
+							removedIndexes = self.indexPathsFromIndexSet(removed)
 						}
 						
-						if !insertedIndexes.isEmpty {
-							self.collectionView?.insertItemsAtIndexPaths(insertedIndexes)
+						if let inserted = collectionChanges.insertedIndexes {
+							insertedIndexes = self.indexPathsFromIndexSet(inserted)
 						}
 						
-						if !changedIndexes.isEmpty {
-							self.collectionView?.reloadItemsAtIndexPaths(changedIndexes)
+						if let changed = collectionChanges.changedIndexes {
+							changedIndexes = self.indexPathsFromIndexSet(changed)
 						}
 						
-					}) { _ in
-					
+						// if we have incremental diffs, tell the collection view to animate insertions and deletions
+						self.collectionView?.performBatchUpdates({
+							
+							if !removedIndexes.isEmpty {
+								self.collectionView?.deleteItemsAtIndexPaths(removedIndexes)
+							}
+							
+							if !insertedIndexes.isEmpty {
+								self.collectionView?.insertItemsAtIndexPaths(insertedIndexes)
+							}
+							
+							if !changedIndexes.isEmpty {
+								self.collectionView?.reloadItemsAtIndexPaths(changedIndexes)
+							}
+							
+						}) { _ in
+						
+						}
 					}
 				}
 			}
@@ -241,7 +244,7 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 	
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		Log.debug(self, "didSelect")
+		// Log.debug(self, "didSelect")
 		
 		if TrapState.Shared.inActionExtension {
 			self.saveActiveSnapshotAndResetAnnotateImageView(indexPath.item, localIdentifier: nil)
@@ -262,7 +265,7 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 			
 			let asset = assetsFetchResults![indexPath.item] as! PHAsset
 			
-			if let selectedItems = collectionView.indexPathsForSelectedItems().filter({ $0 as NSIndexPath != indexPath }) as? [NSIndexPath] {
+			if let selectedItems = collectionView.indexPathsForSelectedItems()?.filter({ $0 as NSIndexPath != indexPath }) {
 				collectionView.performBatchUpdates({
 					for item in selectedItems {
 						collectionView.deselectItemAtIndexPath(item, animated: true)
@@ -275,13 +278,13 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 	}
 	
 	override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-		Log.debug(self, "shouldSelect")
+		// Log.debug(self, "shouldSelect")
 		return true
 	}
 	
 	override func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
 
-		Log.debug(self, "shouldDeselect")
+		// Log.debug(self, "shouldDeselect")
 		
 		let deselect = editing || selecting
 		
@@ -295,7 +298,7 @@ class BtImageCollectionViewController: BtCollectionViewController, UICollectionV
 	
 	override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		Log.debug(self, "didDeselect")
+		// Log.debug(self, "didDeselect")
 		
 		if editing {
 			

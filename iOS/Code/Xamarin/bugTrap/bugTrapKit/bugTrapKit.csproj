@@ -62,12 +62,6 @@
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="PLCrashReporterUnifiedBinding">
-      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\packages\ServiceStack.Interfaces.4.0.42\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
@@ -79,9 +73,6 @@
     </Reference>
     <Reference Include="ServiceStack.Pcl.iOS">
       <HintPath>..\packages\ServiceStack.Client.4.0.42\lib\Xamarin.iOS10\ServiceStack.Pcl.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Octokit">
-      <HintPath>..\packages\Octokit.0.14.0\lib\portable-net45+wp80+win+wpa81\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.HttpClient">
       <HintPath>..\packages\ServiceStack.HttpClient.4.0.42\lib\portable-net45+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.HttpClient.dll</HintPath>
@@ -120,6 +111,7 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Constants\" />
     <Folder Include="Trackers\GitHub\" />
+    <Folder Include="OverlayWindow\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -310,10 +302,12 @@
     <Compile Include="Constants\Fonts.cs" />
     <Compile Include="Trackers\Common\Domain\BugDetailCellData.cs" />
     <Compile Include="Extensions\DateExtensions.cs" />
+    <Compile Include="OverlayWindow\BtOverlayView.cs" />
+    <Compile Include="OverlayWindow\BtOverlayViewController.cs" />
+    <Compile Include="OverlayWindow\BtOverlayWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
   <ItemGroup>
     <InterfaceDefinition Include="bugTrapKit.storyboard" />
   </ItemGroup>

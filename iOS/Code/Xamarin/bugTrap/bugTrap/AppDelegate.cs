@@ -27,11 +27,6 @@ namespace bugTrap
 			
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
-			// Configure ServiceStack Exprot Client
-			IosPclExportClient.Configure();
-
-			TrackerService.Shared.Authenticate();
-
 			window.RootViewController = bugTrapKit.bugTrapKit.GetInitialController();
 			window.MakeKeyAndVisible();
 

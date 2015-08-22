@@ -56,7 +56,7 @@ class RestProxy : NSObject {
 	
 	func getAuthenticatedRequest(url: NSURL, authenticationType: AuthenticationType, method: HttpMethod = HttpMethod.Get, contentType: String = ContentType.Json.rawValue) -> NSMutableURLRequest {
 		
-		var request = getRequest(url, method: method)
+		let request = getRequest(url, method: method)
 		
 			request.addValue(contentType, forHTTPHeaderField: "Content-Type")
 
@@ -66,13 +66,13 @@ class RestProxy : NSObject {
 				
 			case .Basic: // DoneDone
 				
-				request.addValue(authHeader, forHTTPHeaderField: "Authorization")
+				request.addValue(header, forHTTPHeaderField: "Authorization")
 				
 				request.addValue("nocheck", forHTTPHeaderField: "X-Atlassian-Token")
 				
 			case .Token: // Pivotal
 				
-				request.addValue(authHeader, forHTTPHeaderField: "X-TrackerToken")
+				request.addValue(header, forHTTPHeaderField: "X-TrackerToken")
 			}
 		} else {
 			Log.error ("RestProxy authHeader has no value")
@@ -128,8 +128,9 @@ class RestProxy : NSObject {
                     }
                 }
             } else {
+				Log.error("RestProxy processJSONResponse", error)
 				dispatch_async(dispatch_get_main_queue()) {
-					callback(.Error(error))
+					callback(.Error(error!))
 				}
             }
         }
@@ -193,7 +194,7 @@ class RestProxy : NSObject {
 		let data: NSData?
 		do {
 			data = try NSJSONSerialization.dataWithJSONObject(dict, options: [])
-		} catch var error as NSError {
+		} catch let error as NSError {
 			err = error
 			data = nil
 		}
@@ -205,7 +206,7 @@ class RestProxy : NSObject {
         }
 		
         // create a POST request and attach the data
-		var request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post)
+		let request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post)
 			request.HTTPBody = data
 
         // make the service call
@@ -221,7 +222,7 @@ class RestProxy : NSObject {
 	// Pivotal Tracker
 	func postAttachment(url: NSURL, authenticationType: AuthenticationType, attachment: NSData? = nil, callback: (Result<JSON>) -> ()) {
 		
-		var body: NSMutableData = NSMutableData()
+		let body: NSMutableData = NSMutableData()
 		
 		let session = NSURLSession(configuration: sessionConfig)
 		
@@ -242,7 +243,7 @@ class RestProxy : NSObject {
 		let contentType = "\(ContentType.MultiPartForm.rawValue); boundary=\(boundary)"
 		
 		// create a POST request and attach the data
-		var request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post, contentType: contentType)
+		let request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post, contentType: contentType)
 			request.HTTPBody = body
 		
 		
@@ -268,7 +269,7 @@ class RestProxy : NSObject {
 		
 		var fieldData = ""
 		
-        var data: NSMutableData = NSMutableData()
+        let data: NSMutableData = NSMutableData()
 
 		let session = NSURLSession(configuration: sessionConfig)
 		
@@ -302,7 +303,7 @@ class RestProxy : NSObject {
 		let contentType = "\(ContentType.MultiPartForm.rawValue); boundary=\(boundary)"
 		
         // create a POST request and attach the data
-		var request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post, contentType: contentType)
+		let request = getAuthenticatedRequest(url, authenticationType: authenticationType, method: .Post, contentType: contentType)
 			request.HTTPBody = data
 		
 		

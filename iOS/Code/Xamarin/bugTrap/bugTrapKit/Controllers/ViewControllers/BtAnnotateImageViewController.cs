@@ -4,7 +4,6 @@ using System.Linq;
 
 using CoreGraphics;
 using Foundation;
-using Octokit;
 using UIKit;
 
 namespace bugTrapKit
@@ -59,28 +58,6 @@ namespace bugTrapKit
 			// addColorAccessibilityLabels();
 			#endif
 
-			#region GitHub API Testing
-
-//			var client = new GitHubClient (new ProductHeaderValue ("bugTrap"));
-//
-//			client.Credentials = new Credentials ("colbylwilliams", AppKeys.GitHubDevPersonalToken);
-//
-//			//krukow
-//			// var user = await client.User.Get("krukow");
-//			var user = await client.User.Current();
-//			Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
-//				user.Name,
-//				user.PublicRepos,
-//				user.Url);
-//
-//			var issues = await client.Issue.GetAllForCurrent(new IssueRequest { State = ItemState.All });
-//
-//			foreach (var issue in issues) {
-//				Console.WriteLine(issue.Title);
-//			}
-
-			#endregion
-
 			ScreenName = GAIKeys.ScreenNames.AnnotateSnapshot;
 
 			#if !UITEST
@@ -104,6 +81,7 @@ namespace bugTrapKit
 		{
 			base.ViewWillAppear(animated);
 
+			// you just tap to add callout, so showing & hiding the bars each time is annoying
 			NavigationController.HidesBarsOnTap = CurrentTool != Annotate.Tool.Callout;
 
 			// initial view controller in the context of an extension
@@ -116,6 +94,7 @@ namespace bugTrapKit
 				SaveCurrentSnapshotAndResetState(null, null);
 			}
 
+			// Test Cloud restores the devices, so add our own image to the device, so we can choose it later
 			#if UITEST
 			var image = UIImage.FromBundle("test_screenshot");
 			image.SaveToPhotosAlbum((i, e) => {
@@ -170,10 +149,18 @@ namespace bugTrapKit
 
 						await TrapState.Shared.UpdateActiveSnapshotImage(annotatedImage);
 
-						PresentViewController(imageNavigationController, true, null);
+						if (TrapState.Shared.InSdk) {
+							NavigationController.DismissViewController(true, null);
+						} else {
+							PresentViewController(imageNavigationController, true, null);
+						}
 					}
 				} else {
-					PresentViewController(imageNavigationController, true, null);
+					if (TrapState.Shared.InSdk) {
+						NavigationController.DismissViewController(true, null);
+					} else {
+						PresentViewController(imageNavigationController, true, null);
+					}
 				}
 			} else {
 

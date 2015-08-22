@@ -134,7 +134,7 @@ class BtNewBugDetailsSelectTableViewController: BtTableViewController {
 				cell.setSelected(cellData.Selected, animated: false)
 
 			default:
-				cell.setData(title: cellData.Get(DataKeys.Title))
+				cell.setData(cellData.Get(DataKeys.Title))
 				cell.setSelected(cellData.Selected, animated: false)
 			}
 		
@@ -161,7 +161,7 @@ class BtNewBugDetailsSelectTableViewController: BtTableViewController {
 	
 	func initNoDataTitleDetail() {
 		
-		separatorColorCache = tableView.separatorColor
+		separatorColorCache = tableView.separatorColor ?? UIColor.clearColor()
 		
 		tableBackgroundView.frame = tableView.bounds
 		tableView.backgroundView = tableBackgroundView

@@ -28,6 +28,8 @@ namespace bugTrapKit
 			}
 		}
 
+		public bool InSdk { get; set; }
+
 		// public string DeviceDetails = DeviceInfo.String;
 		// public string DeviceDetailsJira = DeviceInfo.JiraString;
 
@@ -98,6 +100,14 @@ namespace bugTrapKit
 			}
 		}
 
+		public async Task AddSnapshotImageForSdk (UIImage snapshotImage)
+		{
+			InSdk = true;
+			// TODO: counterintuitive to clearActive = true, then immediately set it. refactor
+			var localIdentifer = await updateSnapshotImage(snapshotImage, null, true);
+			await SetActiveSnapshotImageAsync(localIdentifer);
+		}
+
 		public void AddSnapshotImage (string localIdentifier)
 		{
 			if (!snapshotImageLocalIdentifiers.Contains(localIdentifier)) {
@@ -130,7 +140,6 @@ namespace bugTrapKit
 				activeSnapshotImageLocalIdentifier = null;
 				ActiveSnapshotImageStore = null; // check
 			}
-				
 		}
 
 		public async Task SetActiveSnapshotImageAsync (string localIdentifier)

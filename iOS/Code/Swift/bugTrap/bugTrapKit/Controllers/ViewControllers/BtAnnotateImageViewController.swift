@@ -66,7 +66,7 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 		
 		TrapState.Shared.getAlbumLocalIdentifier(nil)
 		
-		let tracker = TrackerService.Shared.currentTracker
+		_ = TrackerService.Shared.currentTracker
 		
 		configureNavBarButtonsForContext()
 		
@@ -83,6 +83,7 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		// you just tap to add callouts, so showing & hiding the bars each time is annoying
 		navigationController?.hidesBarsOnTap = currentTool != Annotate.Tool.Callout
 		
 		// initial view controller in the context of an extension
@@ -136,13 +137,23 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 				
 				if let annotatedImage = AnnotateView.incrementImage {
 					TrapState.Shared.updateActiveSnapshotImage(annotatedImage, clearActive: false) { _ in
-						self.presentViewController(self.imageNavigationController!, animated: true, completion: nil)
+						
+						if TrapState.Shared.inSdk {
+							self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+						} else {
+							self.presentViewController(self.imageNavigationController!, animated: true, completion: nil)
+						}
+						
 					}
 					return
 				}
 			}
 		
-			presentViewController(imageNavigationController!, animated: true, completion: nil)
+			if TrapState.Shared.inSdk {
+				navigationController?.dismissViewControllerAnimated(true, completion: nil)
+			} else {
+				presentViewController(imageNavigationController!, animated: true, completion: nil)
+			}
 		
 		} else {
 			
@@ -202,11 +213,11 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 		
 		if let annotatedImage = AnnotateView.incrementImage {
 			
-			let firstActivityItem = UIImageJPEGRepresentation(annotatedImage, 1.0)
+			let firstActivityItem = UIImageJPEGRepresentation(annotatedImage, 1.0) as! AnyObject
 			
 			var applicationActivities = [UIActivity]()
 
-			let donedoneActivity = BtTrackerActivity(trackerType: TrackerType.DoneDone)
+			// let donedoneActivity = BtTrackerActivity(trackerType: TrackerType.DoneDone)
 				
 			applicationActivities.append(BtTrackerActivity(trackerType: TrackerType.DoneDone))
 			
@@ -329,7 +340,7 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 			// if TrapState.Shared.activeSnapshotImageLocalIdentifier != nil && TrapState.Shared.activeSnapshotImageLocalIdentifier != newLocalIdentifier {
 			} else if (inExtension ? !TrapState.Shared.isActiveSnapshot(indexOfActiveSnapshot!) : !TrapState.Shared.isActiveSnapshot(localIdentifierOfActiveSnapshot!)) {
 				
-				if let annotatedImage = AnnotateView.incrementImage {
+				if let _ = AnnotateView.incrementImage {
 
 					self.AnnotateView.resetContextAndState()
 					
@@ -432,7 +443,7 @@ class BtAnnotateImageViewController: BtViewController, UIViewControllerTransitio
 		}
 		
 		// selected an existing screenshot from the new bug form - cancel, save
-		if let newBugDetailsNavController = navigationController?.presentingViewController as? BtNewBugDetailsNavigationController {
+		if let _ = navigationController?.presentingViewController as? BtNewBugDetailsNavigationController {
 			navigationItem.setLeftBarButtonItems([cancelButton, undoButton], animated: false)
 			navigationItem.setRightBarButtonItems([saveButton, redoButton], animated: false)
 		} else if TrapState.Shared.inActionExtension {

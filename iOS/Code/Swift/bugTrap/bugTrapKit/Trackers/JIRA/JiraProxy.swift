@@ -86,7 +86,7 @@ class JiraProxy : TrackerProxy {
 			case let .Error(error):
 				callback(.Error(error))
 				return
-			case let .Value(_):
+			case .Value(_):
 				Analytics.Shared.trackerLogin(TrackerType.JIRA.rawValue)
 				callback(.Value(Wrapped(true)))
 			}
@@ -195,7 +195,7 @@ class JiraProxy : TrackerProxy {
 	func getPeople(projectKey: String, callback: (Result<[JiraUser]>) -> ()) {
 		
 		let url = getUrl("user/assignable/multiProjectSearch?projectKeys=\(projectKey)")
-		var json : JSON?
+//		var json : JSON?
 		
 		restProxy.get(url, authenticationType: .Basic) { result in
 			switch result {
@@ -387,7 +387,7 @@ class JiraProxy : TrackerProxy {
 										//let's just not add this project
 										Log.error("JiraProxy", error)
 									case let .Value(wrapped):
-										if let attachments = wrapped.value {
+										if let _ = wrapped.value {
 											// Log.debug("JiraProxy", attachments)
 											callback(.Value(Wrapped(issue)))
 										}

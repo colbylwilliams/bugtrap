@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PivotalTrackerLoginViewController: TrackerLoginController, UITextFieldDelegate {
+class PivotalTrackerLoginViewController: TrackerLoginController {
 	
 	@IBOutlet var TokenField: UITextField!
 	@IBOutlet var UsernameField: UITextField!

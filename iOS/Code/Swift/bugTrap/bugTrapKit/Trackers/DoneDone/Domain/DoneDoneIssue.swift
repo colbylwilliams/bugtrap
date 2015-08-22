@@ -65,7 +65,7 @@ class DoneDoneIssue : DoneDoneIssueBase {
 
 			let title = json[DoneDoneFields.NewIssueFields.Title.string].stringValue
 
-			let desc = json[DoneDoneFields.NewIssueFields.Description.string].stringValue
+			// let desc = json[DoneDoneFields.NewIssueFields.Description.string].stringValue
 
 			return DoneDoneIssue(id: id, value: title)
 		}

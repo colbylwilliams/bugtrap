@@ -13,7 +13,7 @@ class PivotalState : TrackerState {
 	required init() {
 	}
 	
-	let keychain : Keychain<TrackerType>!
+	var keychain : Keychain<TrackerType>!
 	
 	var Authenticated = false
 	

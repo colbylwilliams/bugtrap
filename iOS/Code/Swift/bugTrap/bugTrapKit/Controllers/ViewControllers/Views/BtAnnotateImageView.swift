@@ -94,7 +94,7 @@ class BtAnnotateImageView: UIView {
 		redrawBitmap()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		
 		super.init(coder: aDecoder)
 		
@@ -521,7 +521,9 @@ class BtAnnotateImageView: UIView {
 	}
 	
 	
-	func drawCallout(context: CGContextRef, callout: CalloutAnnotation) {
+	func drawCallout(context: CGContextRef?, callout: CalloutAnnotation) {
+		
+		if context == nil {return}
 		
 		callout.color.setStroke()
 		
@@ -540,7 +542,9 @@ class BtAnnotateImageView: UIView {
 	}
 	
 	
-	func drawLabel(ctx: CGContextRef, rect: CGRect, yCoord: CGFloat, xCoord: CGFloat, alignment: CTTextAlignment, color: UIColor, label: String, flipContext: Bool = true) {
+	func drawLabel(ctx: CGContextRef?, rect: CGRect, yCoord: CGFloat, xCoord: CGFloat, alignment: CTTextAlignment, color: UIColor, label: String, flipContext: Bool = true) {
+		
+		if ctx == nil {return}
 		
 		let attrString =  NSMutableAttributedString(string: label)
 		
@@ -579,11 +583,11 @@ class BtAnnotateImageView: UIView {
 			
 				CGContextScaleCTM(ctx, 1, -1)
 			
-				CTFrameDraw(frame, ctx)
+				CTFrameDraw(frame, ctx!)
 			
 				CGContextRestoreGState(ctx)
 			} else {
-				CTFrameDraw(frame, ctx)
+				CTFrameDraw(frame, ctx!)
 			}
 		}
 	}

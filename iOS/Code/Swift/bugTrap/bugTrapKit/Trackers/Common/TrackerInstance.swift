@@ -17,7 +17,7 @@ class TrackerInstance<TState : TrackerState, TProxy : TrackerProxy> : Tracker {
     
         super.init(trackerType: trackerType)
         
-        let trackerData = keychain.GetStoredKeyValues()
+        _ = keychain.GetStoredKeyValues()
         //create the specific state and proxy types
         self.State = TState()
 		//self.Proxy = TProxy(data: trackerData)

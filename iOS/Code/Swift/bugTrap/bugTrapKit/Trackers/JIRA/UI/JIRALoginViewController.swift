@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JIRALoginViewController: TrackerLoginController, UITextFieldDelegate {
+class JIRALoginViewController: TrackerLoginController {
 
     @IBOutlet var ServerField: UITextField!
     @IBOutlet var UserNameField: UITextField!
@@ -129,7 +129,7 @@ class JIRALoginViewController: TrackerLoginController, UITextFieldDelegate {
 						self.keychain.StoreKeyValues(trackerData)
 					}
 //				}
-			case let .Value(result):
+			case .Value(_):
 				// This isn't right
 				self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 			}

@@ -20,7 +20,7 @@ class BtTextFieldTableViewCell: BtNewBugDetailsTableViewCell, UITextFieldDelegat
 	}
 	
 	
-	func textField(textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 		PlaceholderLabel.hidden	= !string.isEmpty || range.location > 0
 		return true
 	}
@@ -41,7 +41,7 @@ class BtTextFieldTableViewCell: BtNewBugDetailsTableViewCell, UITextFieldDelegat
 		return false
 	}
 	
-	func textFieldShouldReturn(textField: UITextField!) -> Bool {
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		TextField.resignFirstResponder()
 		return false
 	}
