@@ -1,6 +1,6 @@
 # [bugTrap](http://bugtrap.io)
 
-Download bugTrap for free from the App Store [here](https://itunes.apple.com/us/app/bugtrap/id917492878?mt=8).
+bugTrap is an iOS app that allows users to take a screenshot, annotate it and submit the issue and image to your existing tracking system; all from the same app. bugTrap simply makes it easier to create and submit issues directly to your tracker from the mobile device.  Download bugTrap for free from the App Store [here](https://itunes.apple.com/us/app/bugtrap/id917492878?mt=8).
 
 
 What's here
