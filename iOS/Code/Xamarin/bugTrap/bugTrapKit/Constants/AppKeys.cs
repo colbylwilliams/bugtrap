@@ -9,6 +9,7 @@ namespace bugTrapKit
 		public static string ContactEmail = "support@bugtrap.io";
 		public static string GAITrackingID = "";
 
+
 		public static class Contact
 		{
 			public static string IntegrationSubject = "App: Tracker Integration";
