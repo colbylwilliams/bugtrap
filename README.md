@@ -30,6 +30,8 @@ To see the **Xamarin** version of the library/embed, build the `Insights` projec
 Love
 ----
 
+Much love to [Nate Rickard](https://github.com/NateRickard) for his huge contribution to this codebase.
+
 Also some love from [DoneDone](https://www.getdonedone.com/track-ios-app-issues-bugtrap-donedone/) and [Pivotal Tracker](http://www.pivotaltracker.com/community/tracker-blog/app-tag/ios).
 
 
